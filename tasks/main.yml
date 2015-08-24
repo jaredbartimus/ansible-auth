@@ -22,3 +22,12 @@
     owner: 'root'
     group: 'root'
     mode: '0644'
+
+- name: Configure PAM
+  copy:
+    src: 'etc/pam.d/{{ item }}'
+    dest: '/etc/pam.d/{{ item }}'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  with_items: [ 'common-password', 'login', 'sshd' ]
