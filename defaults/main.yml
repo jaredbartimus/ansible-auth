@@ -2,3 +2,7 @@
 
 # List of Debian packages installed by netlab.auth
 auth_packages: [ 'libpam-cracklib' ]
+
+# List of common system groups
+auth_system_groups:
+  - sftp-only
