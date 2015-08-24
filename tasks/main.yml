@@ -14,3 +14,11 @@
     state: 'present'
   with_items: auth_system_groups
   when: auth_system_groups is defined and auth_system_groups
+
+- name: Configure security access
+  template:
+    src: 'etc/security/access.conf.j2'
+    dest: '/etc/security/access.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'

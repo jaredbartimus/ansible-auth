@@ -1,0 +1,19 @@
+# Warning: File is managed by Ansible
+
+# Root
+{% if auth_root_login %}
++ : root : ALL
+{% endif %}
+
+# Users
+{% for username in auth_users_list %}
++ : {{ username }} : ALL
+{% endfor %}
+
+# Services
+{% for username in auth_services_list %}
++ : {{ username }} : ALL
+{% endfor %}
+
+# All other users should be denied to get access from all sources.
+- : ALL : ALL

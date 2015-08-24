@@ -6,3 +6,12 @@ auth_packages: [ 'libpam-cracklib' ]
 # List of common system groups
 auth_system_groups:
   - sftp-only
+
+# Allow user root to login
+auth_root_login: true
+
+# Allow users to login
+auth_users_list: []
+
+# Allow services to login
+auth_services_list: []
