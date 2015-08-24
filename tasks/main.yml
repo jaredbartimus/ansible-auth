@@ -1,0 +1,8 @@
+---
+
+- name: Install auth-related packages
+  apt:
+    name: '{{ item }}'
+    state: 'latest'
+    install_recommends: false
+  with_items: auth_packages
