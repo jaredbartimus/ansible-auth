@@ -15,3 +15,6 @@ auth_users_list: []
 
 # Allow services to login
 auth_services_list: []
+
+# Enable password checking via cracklib
+auth_cracklib: true

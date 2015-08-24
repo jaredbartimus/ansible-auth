@@ -31,3 +31,13 @@
     group: 'root'
     mode: '0644'
   with_items: [ 'common-password', 'login', 'sshd' ]
+
+- name: Configure pam_cracklib
+  template:
+    src: 'usr/share/pam-configs/cracklib.j2'
+    dest: '/usr/share/pam-configs/cracklib'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify: [ 'Update PAM common configuration' ]
+  when: auth_cracklib is defined and auth_cracklib
