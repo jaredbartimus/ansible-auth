@@ -96,7 +96,7 @@ session    optional   pam_lastlog.so
 session    optional   pam_mail.so standard
 
 # Sets the loginuid process attribute
-#session    required     pam_loginuid.so
+session    required     pam_loginuid.so
 
 # Standard Un*x account and session
 @include common-account

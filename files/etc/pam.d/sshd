@@ -19,7 +19,7 @@ account    required     pam_access.so
 session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so close
 
 # Set the loginuid process attribute.
-#session    required     pam_loginuid.so
+session    required     pam_loginuid.so
 
 # Create a new session keyring.
 session    optional     pam_keyinit.so force revoke
