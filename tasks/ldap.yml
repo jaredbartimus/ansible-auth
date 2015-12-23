@@ -26,16 +26,13 @@
 
 - name: Configure PAM LDAP
   template:
-    src: 'etc/pam_ldap.conf.j2'
-    dest: '/etc/pam_ldap.conf'
+    src: 'etc/{{ item }}.j2'
+    dest: '/etc/{{ item }}.conf'
     owner: 'root'
     group: 'root'
     mode: '0600'
-
-- name: Configure PAM LDAP password
-  template:
-    src: 'etc/pam_ldap.secret.j2'
-    dest: '/etc/pam_ldap.secret'
-    owner: 'root'
-    group: 'root'
-    mode: '0600'
+  with_items:
+    - 'pam_ldap.conf'
+    - 'pam_ldap.secret'
+    - 'libnss-ldap.conf'
+    - 'libnss-ldap.secret'
