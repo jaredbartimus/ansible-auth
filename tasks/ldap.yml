@@ -24,7 +24,18 @@
     mode: '0640'
   notify: [ 'Restart nslcd' ]
 
-- name: Configure PAM LDAP
+- name: Configure PAM LDAP configs
+  template:
+    src: 'etc/{{ item }}.j2'
+    dest: '/etc/{{ item }}'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  with_items:
+    - 'pam_ldap.conf'
+    - 'libnss-ldap.conf'
+
+- name: Configure PAM LDAP secrets
   template:
     src: 'etc/{{ item }}.j2'
     dest: '/etc/{{ item }}'
@@ -32,7 +43,5 @@
     group: 'root'
     mode: '0600'
   with_items:
-    - 'pam_ldap.conf'
     - 'pam_ldap.secret'
-    - 'libnss-ldap.conf'
     - 'libnss-ldap.secret'
