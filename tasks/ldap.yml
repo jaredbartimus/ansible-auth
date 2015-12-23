@@ -5,7 +5,7 @@
     name: '{{ item }}'
     state: 'latest'
     install_recommends: false
-  with_items: [ 'nslcd', 'libpam-ldap', 'ldap-utils' ]
+  with_items: [ 'nslcd', 'libpam-ldap', 'ldap-utils', 'libnss-ldap' ]
 
 - name: Configure ldap
   template:
@@ -27,7 +27,7 @@
 - name: Configure PAM LDAP
   template:
     src: 'etc/{{ item }}.j2'
-    dest: '/etc/{{ item }}.conf'
+    dest: '/etc/{{ item }}'
     owner: 'root'
     group: 'root'
     mode: '0600'
