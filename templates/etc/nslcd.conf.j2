@@ -22,17 +22,17 @@ base {{ auth_tpl_ldap_conf_domain | join(",") }}
 ldap_version 3
 
 # The DN to bind with for normal lookups.
-{% if auth_nslcd_binddn is defined and auth_nslcd_binddn %}
-binddn {{ auth_nslcd_binddn }}
-bindpw {{ auth_nslcd_bindpw }}
+{% if auth_pam_binddn is defined and auth_pam_binddn %}
+binddn {{ auth_pam_binddn }}
+bindpw {{ auth_pam_bindpw }}
 {% else %}
 #binddn cn=annonymous,dc=example,dc=net
 #bindpw secret
 {% endif %}
 
 # The DN used for password modifications by root.
-{% if auth_nslcd_rootpwmoddn is defined and auth_nslcd_rootpwmoddn %}
-rootpwmoddn {{ auth_nslcd_rootpwmoddn }}
+{% if auth_pam_rootbinddn is defined and auth_pam_rootbinddn %}
+rootpwmoddn {{ auth_pam_rootbinddn }}
 {% else %}
 #rootpwmoddn cn=admin,dc=example,dc=com
 {% endif %}

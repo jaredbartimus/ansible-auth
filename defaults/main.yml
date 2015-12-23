@@ -37,10 +37,6 @@ auth_cracklib: true
 # LDAP server over ssl?
 auth_ldap_ssl: false
 
-# NSLCD lookup binddn and password
-#auth_nslcd_binddn: 'cn=nslcd,ou=services,dc=example,dc=com'
-#auth_nslcd_bindpw: 'secret'
-
 # PAM binddn
 #auth_pam_binddn: 'cn=pam,ou=services,dc=example,dc=com'
 #auth_pam_bindpw: 'secret'
