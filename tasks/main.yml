@@ -41,7 +41,11 @@
     owner: 'root'
     group: 'root'
     mode: '0644'
-  with_items: [ 'common-password', 'login', 'sshd' ]
+  with_items:
+    - 'common-account'
+    - 'common-password'
+    - 'login'
+    - 'sshd'
 
 - name: Configure pam_cracklib
   template:
