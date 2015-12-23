@@ -36,7 +36,7 @@
 
 - name: Configure PAM
   template:
-    src: 'etc/pam.d/{{ item }}'
+    src: 'etc/pam.d/{{ item }}.j2'
     dest: '/etc/pam.d/{{ item }}'
     owner: 'root'
     group: 'root'
