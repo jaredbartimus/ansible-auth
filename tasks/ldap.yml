@@ -5,7 +5,7 @@
     name: '{{ item }}'
     state: 'latest'
     install_recommends: false
-  with_items: [ 'nslcd', 'libpam-ldap' ]
+  with_items: [ 'nslcd', 'libpam-ldap', 'ldap-utils' ]
 
 - name: Configure ldap
   template:
