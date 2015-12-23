@@ -31,3 +31,11 @@
     owner: 'root'
     group: 'root'
     mode: '0644'
+
+- name: Configure PAM LDAP password
+  template:
+    src: 'etc/pam_ldap.secret.j2'
+    dest: '/etc/pam_ldap.secret'
+    owner: 'root'
+    group: 'root'
+    mode: '0600'
