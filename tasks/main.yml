@@ -10,6 +10,14 @@
 - include: ldap.yml
   when: "'ldap' in auth_capabilities"
 
+- name: Configure nsswitch
+  template:
+    src: 'etc/nsswitch.conf.j2'
+    dest: '/etc/nsswitch.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+
 - name: Create common system groups
   group:
     name: '{{ item }}'
