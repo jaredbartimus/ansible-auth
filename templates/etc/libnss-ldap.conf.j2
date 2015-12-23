@@ -64,8 +64,8 @@ bindpw {{ auth_pam_bindpw }}
 # stored in /etc/libnss-ldap.secret (mode 600)
 # Use 'echo -n "mypassword" > /etc/libnss-ldap.secret' instead
 # of an editor to create the file.
-{% if auth_pam_rootbinddn is defined and auth_pam_rootbinddn %}
-rootbinddn {{ auth_pam_rootbinddn }}
+{% if auth_pam_binddn is defined and auth_pam_binddn %}
+rootbinddn {{ auth_pam_binddn }}
 {% else %}
 #rootbinddn cn=pampasswd,ou=services,dc=example,dc=com
 {% endif %}
