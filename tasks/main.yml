@@ -46,6 +46,7 @@
     - 'common-auth'
     - 'common-password'
     - 'common-session'
+    - 'common-session-noninteractive'
     - 'login'
     - 'sshd'
 
