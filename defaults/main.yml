@@ -3,6 +3,10 @@
 # List of Debian packages installed by netlab.auth
 auth_packages: [ 'libpam-cracklib' ]
 
+# Authenticate on a ldap server
+# Possible values are 'compat' and 'ldap'
+auth_capabilities: [ 'compat' ]
+
 # List of common system groups
 auth_system_groups:
   - sftp-only

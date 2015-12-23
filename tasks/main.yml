@@ -7,6 +7,9 @@
     install_recommends: false
   with_items: auth_packages
 
+- include: ldap.yml
+  when: "'ldap' in auth_capabilities"
+
 - name: Create common system groups
   group:
     name: '{{ item }}'
