@@ -45,3 +45,9 @@
   with_items:
     - 'pam_ldap.secret'
     - 'libnss-ldap.secret'
+
+- name: Restart nslcd
+  service:
+    name: 'nslcd'
+    state: 'restarted'
+  changed_when: false
