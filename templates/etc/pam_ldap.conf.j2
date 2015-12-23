@@ -27,7 +27,7 @@
 #host 127.0.0.1
 
 # The distinguished name of the search base.
-base {{ auth_tpl_ldap_domain | join(",") }}
+base {{ auth_tpl_ldap_conf_domain | join(",") }}
 
 # Another way to specify your LDAP server is to provide an
 # Unix Domain Sockets to connect to a local LDAP Server.
