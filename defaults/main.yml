@@ -42,11 +42,8 @@ auth_ldap_ssl: false
 #auth_pam_bindpw: 'secret'
 
 # Root User ID on LDAP
-#auth_pam_rootbinddn: 'cn=managed,dc=example,dc=com'
+#auth_pam_rootbinddn: 'cn=manager,dc=example,dc=com'
 #auth_pam_rootbindpw: 'secret'
-
-# PAM passwd
-#auth_nslcd_rootpwmoddn: 'cn=pampasswd,ou=services,dc=example,dc=com'
 
 # LDAP bases
 #auth_nslcd_base_passwd: 'ou=people,dc=example,dc=com'
