@@ -35,7 +35,7 @@
     mode: '0644'
 
 - name: Configure PAM
-  copy:
+  template:
     src: 'etc/pam.d/{{ item }}'
     dest: '/etc/pam.d/{{ item }}'
     owner: 'root'
