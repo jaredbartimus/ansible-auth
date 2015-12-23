@@ -1,0 +1,71 @@
+{% set auth_tpl_ldap_conf_domain = [] %}
+{% set auth_tpl_ldap_domain = auth_ldap_domain | d(ansible_domain) %}
+{% for element in auth_tpl_ldap_domain.split(".") %}
+{% set _ = auth_tpl_ldap_conf_domain.append("dc=" + element) %}
+{% endfor %}
+# {{ ansible_managed }}
+# /etc/nslcd.conf
+# nslcd configuration file. See nslcd.conf(5)
+# for details.
+
+# The user and group nslcd should run as.
+uid nslcd
+gid nslcd
+
+# The location at which the LDAP server(s) should be reachable.
+uri {{ auth_ldap_server | join(" ") }}
+
+# The search base that will be used for all queries.
+base {{ auth_tpl_ldap_conf_domain | join(",") }}
+
+# The LDAP protocol version to use.
+ldap_version 3
+
+# The DN to bind with for normal lookups.
+{% if auth_nslcd_binddn is defined and auth_nslcd_binddn %}
+binddn {{ auth_nslcd_binddn }}
+bindpw {{ auth_nslcd_bindpw }}
+{% else %}
+#binddn cn=annonymous,dc=example,dc=net
+#bindpw secret
+{% endif %}
+
+# The DN used for password modifications by root.
+{% if auth_nslcd_rootpwmoddn is defined and auth_nslcd_rootpwmoddn %}
+rootpwmoddn {{ auth_nslcd_rootpwmoddn }}
+{% else %}
+#rootpwmoddn cn=admin,dc=example,dc=com
+{% endif %}
+
+# SSL options
+{% if auth_ldap_ssl is defined and auth_ldap_ssl %}
+ssl start_tls
+tls_reqcert demand
+tls_cacertfile /etc/ssl/certs/ca-certificates.crt
+{% else %}
+ssl off
+{% endif %}
+
+#
+# Lookup settings
+#
+
+# Subtree containing the /etc/passwd information (user accounts)
+base passwd {{ auth_nslcd_base_passwd }}
+
+# Subtree containing the /etc/shadow information (shadow)
+base shadow {{ auth_nslcd_base_shadow }}
+
+# Subtree containing the /etc/group information (groups)
+base group {{ auth_nslcd_base_group }}
+
+# Set-up the scope of search.
+scope one
+
+
+#
+# Timing/caching settings
+#
+
+# If the LDAP server is not reachable, give up after 5 seconds of trying.
+timelimit 5

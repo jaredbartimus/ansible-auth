@@ -5,7 +5,7 @@
     name: '{{ item }}'
     state: 'latest'
     install_recommends: false
-  with_items: [ 'libpam-ldap' ]
+  with_items: [ 'nslcd', 'libpam-ldap' ]
 
 - name: Configure ldap
   template:
@@ -14,3 +14,11 @@
     owner: 'root'
     group: 'root'
     mode: '0644'
+
+- name: Configure nslcd
+  template:
+    src: 'etc/nslcd.conf.j2'
+    dest: '/etc/nslcd.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0640'

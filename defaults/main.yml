@@ -3,7 +3,7 @@
 # List of Debian packages installed by netlab.auth
 auth_packages: [ 'libpam-cracklib' ]
 
-# Authenticate on a ldap server
+# Authentication capabilities
 # Possible values are 'compat' and 'ldap'
 auth_capabilities: [ 'compat' ]
 
@@ -22,3 +22,29 @@ auth_services_list: []
 
 # Enable password checking via cracklib
 auth_cracklib: true
+
+
+#
+# LDAP
+#
+
+# LDAP domain
+#auth_ldap_domain: 'example.com'
+
+# LDAP server
+#auth_ldap_server: [ 'ldap.example.com' ]
+
+# LDAP server over ssl?
+auth_ldap_ssl: false
+
+# NSLCD lookup binddn and password
+#auth_nslcd_binddn: 'cn=nslcd,ou=services,dc=example,dc=com'
+#auth_nslcd_bindpw: 'secret'
+
+# PAM passwd
+#auth_nslcd_rootpwmoddn: 'cn=pampasswd,ou=services,dc=example,dc=com'
+
+# LDAP bases
+#auth_nslcd_base_passwd: 'ou=people,dc=example,dc=com'
+#auth_nslcd_base_shadow: 'ou=people,dc=example,dc=com'
+#auth_nslcd_base_group: 'ou=people,dc=example,dc=com'
