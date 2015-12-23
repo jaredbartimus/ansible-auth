@@ -48,3 +48,7 @@ auth_ldap_ssl: false
 #auth_nslcd_base_passwd: 'ou=people,dc=example,dc=com'
 #auth_nslcd_base_shadow: 'ou=people,dc=example,dc=com'
 #auth_nslcd_base_group: 'ou=people,dc=example,dc=com'
+
+# Create homedirs automatic if they does not exists?
+auth_mkhomedir: true
+auth_mkhomedir_umask: '0077'

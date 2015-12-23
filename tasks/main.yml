@@ -45,6 +45,7 @@
     - 'common-account'
     - 'common-auth'
     - 'common-password'
+    - 'common-session'
     - 'login'
     - 'sshd'
 
