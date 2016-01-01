@@ -16,9 +16,11 @@
 
 # here are the per-package modules (the "Primary" block)
 account	[success=2 new_authtok_reqd=done default=ignore]	pam_unix.so
+{% if 'ldap' in auth_capabilities %}
 account	[success=1 default=ignore]	                        pam_ldap.so
 {%- if auth_ldap_minimum_uid is defined and auth_ldap_minimum_uid %}
  minimum_uid={{ auth_ldap_minimum_uid }}
+{% endif %}
 {% endif %}
 # here's the fallback if no module succeeds
 account	requisite			pam_deny.so

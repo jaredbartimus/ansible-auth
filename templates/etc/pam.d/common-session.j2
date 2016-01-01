@@ -26,8 +26,10 @@ session	required            pam_permit.so
 session required            pam_mkhomedir.so umask={{ auth_mkhomedir_umask }}
 {% endif %}
 session	required            pam_unix.so
+{% if 'ldap' in auth_capabilities %}
 session	optional            pam_ldap.so
 {%- if auth_ldap_minimum_uid is defined and auth_ldap_minimum_uid %}
  minimum_uid={{ auth_ldap_minimum_uid }}
+{% endif %}
 {% endif %}
 # end of pam-auth-update config
