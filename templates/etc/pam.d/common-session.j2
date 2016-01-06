@@ -22,14 +22,16 @@ session	requisite           pam_deny.so
 # since the modules above will each just jump around
 session	required            pam_permit.so
 # and here are more per-package modules (the "Additional" block)
+{% if 'ldap' in auth_capabilities %}
 {% if auth_mkhomedir is defined and auth_mkhomedir %}
 session required            pam_mkhomedir.so umask={{ auth_mkhomedir_umask }}
 {% endif %}
 session	required            pam_unix.so
-{% if 'ldap' in auth_capabilities %}
 session	optional            pam_ldap.so
 {%- if auth_ldap_minimum_uid is defined and auth_ldap_minimum_uid %}
  minimum_uid={{ auth_ldap_minimum_uid }}
 {% endif %}
+{% else %}
+session	required            pam_unix.so
 {% endif %}
 # end of pam-auth-update config
