@@ -1,7 +1,7 @@
 ---
 
 # List of Debian packages installed by netlab.auth
-auth_packages: [ 'libpam-cracklib' ]
+auth_packages: [ 'libpam-cracklib', 'libpam-systemd' ]
 
 # Authentication capabilities
 # Possible values are 'compat' and 'ldap'
@@ -22,6 +22,9 @@ auth_services_list: []
 
 # Enable password checking via cracklib
 auth_cracklib: true
+
+# Use pam_systemd
+auth_pam_systemd: true
 
 
 #

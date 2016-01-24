@@ -22,6 +22,9 @@ session	requisite           pam_deny.so
 # since the modules above will each just jump around
 session	required            pam_permit.so
 # and here are more per-package modules (the "Additional" block)
+{% if auth_pam_systemd | d(True) %}
+session optional            pam_systemd.so
+{% endif %}
 {% if 'ldap' in auth_capabilities %}
 {% if auth_mkhomedir is defined and auth_mkhomedir %}
 session required            pam_mkhomedir.so umask={{ auth_mkhomedir_umask }}
