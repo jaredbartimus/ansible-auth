@@ -5,7 +5,7 @@
     name: '{{ item }}'
     state: 'latest'
     install_recommends: false
-  with_items: auth_packages
+  with_items: '{{ auth_packages }}'
 
 - include: ldap.yml
   when: "'ldap' in auth_capabilities"
@@ -23,7 +23,7 @@
     name: '{{ item }}'
     system: true
     state: 'present'
-  with_items: auth_system_groups
+  with_items: '{{ auth_system_groups }}'
   when: auth_system_groups is defined and auth_system_groups
 
 - name: Configure security access
